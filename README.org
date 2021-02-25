@@ -20,7 +20,8 @@ Included are interfaces/classes to represent [[src/TOGoS/Mail/Message.php][e-mai
 (interfaces just declare getter methods for basic mail attributes),
 and some different [[src/TOGoS/Mail/Transport.php][transports]]:
 - [[src/TOGoS/Mail/ZendTransport.php][ZendTransport]], for when you've got Zend Framework (whichever version we were using in 2011) classes lying around,
-  along with 
+  along with [[src/TOGoS/Mail/ZendDefaultTransportAccess.php][a utility class]] to retrieve the Zend transport object to be wrapped,
+  because Zend for some reason didn't include that???
 - [[src/TOGoS/Mail/SendmailTransport.php][SendmailTransport]], which just calls the ~mail~ function.
 - [[src/TOGoS/Mail/SanityCheckingTransport.php][SanityCheckingTransport]], which will check that your messages look reasonable
   (have a sender and recipient, all e-mail addresses have exactly one "@" in them)
