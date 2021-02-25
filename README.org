@@ -3,16 +3,21 @@
 tl;dr: This project's here for historical interest.
 You probably want to use Swiftmailer instead.
 
-Used to be sending e-mail in PHP was kind of a pain!
-There were some built-in functions to do it.
-Different web frameworks each provided their own overcomplicated framework,
-often bound up with some templating engine or other such nonsense.
+Sending e-mail in PHP used to be kind of a pain!
+There were some built-in functions to do it,
+but the API was awkward to use directly and everyone wrapped it.
+Different web frameworks each provided their own overcomplicated e-mail system,
+often bound up with some templating engine or other such unwanted crud.
 
-This library solved that, and provided a simple API to provide a point of separation
-between the application and whatever e-mail transport mechanism you needed to write
-to make it work.
+TOGoS PHP Mail library solved that,
+and provided a simple API to provide a point of separation
+between the application and whatever e-mail transport mechanism you
+decided to use (and a simple transport interface in case you had to write your own,
+which you probably would because I didn't have time to write
+every implementation that anyone might need).
 
-Included are classes to represent mail messages in a simple way,
+Included are interfaces/classes to represent [[src/TOGoS/Mail/Message.php][e-mail messages]] in a simple way
+(interfaces just declare getter methods for basic mail attributes),
 and some different [[src/TOGoS/Mail/Transport.php][transports]]:
 - [[src/TOGoS/Mail/ZendTransport.php][ZendTransport]], for when you've got Zend Framework (whichever version we were using in 2011) classes lying around,
   along with 
