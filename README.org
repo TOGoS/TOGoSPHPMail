@@ -1,0 +1,30 @@
+#+TITLE: TOGoS PHP Mail, a simple e-mail API
+
+tl;dr: This project's here for historical interest.
+You probably want to use Swiftmailer instead.
+
+Used to be sending e-mail in PHP was kind of a pain!
+There were some built-in functions to do it.
+Different web frameworks each provided their own overcomplicated framework,
+often bound up with some templating engine or other such nonsense.
+
+This library solved that, and provided a simple API to provide a point of separation
+between the application and whatever e-mail transport mechanism you needed to write
+to make it work.
+
+Included are classes to represent mail messages in a simple way,
+and some different [[src/TOGoS/Mail/Transport.php][transports]]:
+- [[src/TOGoS/Mail/ZendTransport.php][ZendTransport]], for when you've got Zend Framework (whichever version we were using in 2011) classes lying around,
+  along with 
+- [[src/TOGoS/Mail/SendmailTransport.php][SendmailTransport]], which just calls the ~mail~ function.
+- [[src/TOGoS/Mail/SanityCheckingTransport.php][SanityCheckingTransport]], which will check that your messages look reasonable
+  (have a sender and recipient, all e-mail addresses have exactly one "@" in them)
+  before forwarding to another, wrapped transport if they are,
+  and throwing an exception or logging an error (as configured) otherwise.
+- [[src/TOGoS/Mail/RedirectingTransport.php][RedirectingTransport]], useful for staging/development environments,
+  which rewrites messages such that they all go to some other configured address
+  before passing them on to another, wrapped transport.
+
+This was a huge step forward, but then [[https://swiftmailer.symfony.com/][Swiftmailer]] came around and made it redundant.
+But then Swiftmailer is probably a lot more lines of code?
+So if you need something really small, maybe TOGoS PHP Mail is for you!
